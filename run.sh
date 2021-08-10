@@ -22,12 +22,12 @@ COMMAND="$SHEBANG \"$SCRIPT\" $ARGS"
 # mv "$JOBNAME.out" "$OUTFILE.out"
 # echo $COMMAND "&> \"$OUTFILE.out\""
 
-eval $COMMAND &> "$JOBNAME.out.tmp" &
+eval $COMMAND &> "$HOME/runlogs/$JOBNAME.out.tmp" &
 # $! is only the PID of the eval, its direct child is the shebang + script
 # and we presume the script has a single direct child that we want to kill
 # so that's the PID we use in the output file
 PARENT_PID=$!
 sleep 0.5 # to make sure python starts
 PYTHON_PID=$(pgrep -P $(pgrep -P $PARENT_PID))
-echo $COMMAND "&> \"$JOBNAME.$PYTHON_PID.out\""
-mv "$JOBNAME.out.tmp" "$JOBNAME.$PYTHON_PID.out"
+echo $COMMAND "&> \"$HOME/runlogs/$JOBNAME.$PYTHON_PID.out\""
+mv "$HOME/runlogs/$JOBNAME.out.tmp" "$HOME/runlogs/$JOBNAME.$PYTHON_PID.out"
