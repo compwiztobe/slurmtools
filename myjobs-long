@@ -1,0 +1,1 @@
+watch -n1 "squeue -o '%6i %80j  %9T %15u %15P %20R %13b %11l %11L' -u $USER"

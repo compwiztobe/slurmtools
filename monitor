@@ -1,0 +1,1 @@
+squeue -o   "%6i %12j  %9T %12u %8g %15P %4D %8R %4C %13b %8m %11l %11L" | ~/wonkee_cluster_monitor.py
