@@ -1,0 +1,6 @@
+#!/bin/bash
+
+#PIDS=$(python -c "import os; print('.'.join(file.split('.')[-2] for file in os.listdir('$HOME') if file.endswith('.out')))")
+PIDS=$(ls ~/runlogs | grep -o -E "*.([0-9]+).out" | cut -d. -f2 | paste -d, -s)
+#echo $PIDS
+ps u --pid="$PIDS"
