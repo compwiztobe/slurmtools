@@ -25,7 +25,7 @@ COMMAND="$SHEBANG \"$SCRIPT\" $ARGS"
 # mv "$JOBNAME.out" "$OUTFILE.out"
 # echo $COMMAND "&> \"$OUTFILE.out\""
 
-OUTFILE="$HOME/runlogs/$JOBNAME.out.tmp"
+OUTFILE="$HOME/runlogs/$SCRIPTNAME.out.tmp"
 
 date --iso=s >> "$OUTFILE"
 
@@ -59,5 +59,5 @@ PARENT_PID=$!
 #PYTHON_PID=$(pgrep -P $(pgrep -P $PARENT_PID))
 # or only go a single level if spawning python directly from the eval (as SCRIPT)
 PYTHON_PID=$(pgrep -P $PARENT_PID)
-echo $COMMAND "&> \"$HOME/runlogs/$JOBNAME.$PYTHON_PID.out\""
-mv "$OUTFILE" "$HOME/runlogs/$JOBNAME.$PYTHON_PID.out"
+echo $COMMAND "&> \"$HOME/runlogs/$SCRIPTNAME.$PYTHON_PID.out\""
+mv "$OUTFILE" "$HOME/runlogs/$SCRIPTNAME.$PYTHON_PID.out"
